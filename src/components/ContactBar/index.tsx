@@ -1,12 +1,14 @@
-import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
-import * as S from './styles'
 import { useState } from 'react'
+import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
+
 import Button from '../Button'
+
+import * as S from './styles'
 
 type ContactBarProps = {
   name: string
   email: string
-  telefone: string
+  phone: string
   image: string
   handleClick?: () => void
 }
@@ -14,7 +16,7 @@ type ContactBarProps = {
 const ContactBar = ({
   name,
   email,
-  telefone,
+  phone,
   image,
   handleClick
 }: ContactBarProps) => {
@@ -38,7 +40,7 @@ const ContactBar = ({
         </S.ContainerTitle>
         <div>
           <S.Text>
-            Tel: <span>{telefone}</span>
+            Tel: <span>{phone}</span>
           </S.Text>
           <S.Text>
             E-mail: <span>{email}</span>

@@ -1,7 +1,9 @@
-import GuideBar from '../../components/GuideBar'
 import { RiContactsFill, RiAddLine } from 'react-icons/ri'
 import { MdFavorite } from 'react-icons/md'
-import { S } from './styles'
+
+import GuideBar from '../../components/GuideBar'
+
+import * as S from './styles'
 
 const Home = () => {
   return (

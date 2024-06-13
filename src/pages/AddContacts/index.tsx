@@ -1,12 +1,11 @@
 import { useState } from 'react'
+import { RiAddLine } from 'react-icons/ri'
+import { IoHome } from 'react-icons/io5'
+import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
 
 import Hero from '../../components/Hero'
 import InputText from '../../components/Input'
 import Button from '../../components/Button'
-
-import { RiAddLine } from 'react-icons/ri'
-import { IoHome } from 'react-icons/io5'
-import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
 
 import * as S from './styles'
 

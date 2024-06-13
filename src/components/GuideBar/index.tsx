@@ -1,13 +1,14 @@
 import { IconType } from 'react-icons'
+
 import * as S from './styles'
 
-type PropsType = {
+type GuideBarProps = {
   title: string
   route: string
   Icon: IconType
 }
 
-const GuideBar = ({ title, route, Icon }: PropsType) => {
+const GuideBar = ({ title, route, Icon }: GuideBarProps) => {
   return (
     <S.Bar>
       <S.BoxIcon>

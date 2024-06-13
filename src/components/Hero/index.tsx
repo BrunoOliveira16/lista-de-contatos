@@ -1,4 +1,5 @@
 import { IconType } from 'react-icons'
+
 import * as S from './styles'
 
 type HeroProps = {
