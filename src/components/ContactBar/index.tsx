@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
 
 import Button from '../Button'
@@ -10,6 +9,7 @@ type ContactBarProps = {
   email: string
   phone: string
   image: string
+  isFavorite: boolean
   handleClick?: () => void
 }
 
@@ -18,10 +18,9 @@ const ContactBar = ({
   email,
   phone,
   image,
+  isFavorite,
   handleClick
 }: ContactBarProps) => {
-  const [favorite, setFavorite] = useState(false)
-
   return (
     <S.ContainerBar>
       <S.ContainerImage>
@@ -32,11 +31,7 @@ const ContactBar = ({
           <S.Text>
             Nome: <span>{name}</span>
           </S.Text>
-          {favorite ? (
-            <MdOutlineStar onClick={() => setFavorite(!favorite)} />
-          ) : (
-            <MdStarBorder onClick={() => setFavorite(!favorite)} />
-          )}
+          {isFavorite ? <MdOutlineStar /> : <MdStarBorder />}
         </S.ContainerTitle>
         <div>
           <S.Text>
