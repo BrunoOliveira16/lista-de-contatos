@@ -1,12 +1,31 @@
 import { RiContactsFill } from 'react-icons/ri'
 import { IoHome } from 'react-icons/io5'
 
+import { contactsData } from '../../data/data'
+
 import Hero from '../../components/Hero'
 import ContactBar from '../../components/ContactBar'
 
 import * as S from './styles'
 
 const MyContacts = () => {
+  function renderMyContacts() {
+    if (!contactsData) {
+      return <p>Você não possui Contatos</p>
+    }
+
+    return contactsData.map((item) => (
+      <ContactBar
+        name={item.name}
+        phone={item.phone}
+        email={item.email}
+        image={item.image}
+        isFavorite={item.isFavorite}
+        key={item.id}
+      />
+    ))
+  }
+
   return (
     <S.ContainerMyContact>
       <Hero
@@ -16,26 +35,7 @@ const MyContacts = () => {
         titleIcon="Home"
         to="/"
       />
-      <S.ContainerContacts>
-        <ContactBar
-          name="Bruno Oliveira"
-          email="bruno@email.com"
-          phone="(00) 99876-5432"
-          image="https://placehold.co/200x200"
-        />
-        <ContactBar
-          name="Bruno"
-          email="bruno@email.com"
-          phone="(00) 99876-5432"
-          image="https://placehold.co/200x200"
-        />
-        <ContactBar
-          name="Bruno Oliveira"
-          email="bruno@email.com"
-          phone="(00) 99876-5432"
-          image="https://placehold.co/200x200"
-        />
-      </S.ContainerContacts>
+      <S.ContainerContacts>{renderMyContacts()}</S.ContainerContacts>
     </S.ContainerMyContact>
   )
 }
