@@ -9,3 +9,27 @@ export const ContainerAddContact = styled.div`
   background-color: ${Colors.blue};
   border-radius: 10px;
 `
+
+export const ContainerContacts = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0;
+`
+
+export const ContainerPhoneAndEmail = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+`
+
+export const ContainerButtons = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+
+  svg {
+    font-size: 32px;
+    color: ${Colors.yellow};
+    cursor: pointer;
+  }
+`

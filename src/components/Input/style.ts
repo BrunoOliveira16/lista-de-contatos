@@ -16,4 +16,16 @@ export const Label = styled.label`
 export const Input = styled.input`
   padding: 8px;
   font-size: 16px;
+  border: 2px solid;
+  border-color: ${Colors.blue100};
+  border-radius: 4px;
+
+  &:focus {
+    border-color: ${Colors.blue150};
+    outline: none;
+  }
+
+  &::placeholder {
+    color: ${Colors.blue50};
+  }
 `
