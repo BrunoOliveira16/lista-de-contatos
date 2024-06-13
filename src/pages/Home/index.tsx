@@ -14,7 +14,7 @@ const Home = () => {
         Icon={RiContactsFill}
       />
       <GuideBar title="Adicionar" route="/addContacts" Icon={RiAddLine} />
-      <GuideBar title="Favoritos" route="/myContacts" Icon={MdFavorite} />
+      <GuideBar title="Favoritos" route="/favorites" Icon={MdFavorite} />
     </S.Home>
   )
 }
