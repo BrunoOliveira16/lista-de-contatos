@@ -22,7 +22,7 @@ const Favorites = () => {
   }
 
   function renderFavorites() {
-    if (!favoritesData) {
+    if (favoritesData.length === 0) {
       return <p>Você não possui favoritos</p>
     }
 
