@@ -1,7 +1,8 @@
+import { useSelector } from 'react-redux'
 import { RiContactsFill } from 'react-icons/ri'
 import { IoHome } from 'react-icons/io5'
 
-import { contactsData } from '../../data/data'
+import { RootReducer } from '../../store'
 
 import Hero from '../../components/Hero'
 import ContactBar from '../../components/ContactBar'
@@ -9,12 +10,14 @@ import ContactBar from '../../components/ContactBar'
 import * as S from './styles'
 
 const MyContacts = () => {
+  const { items } = useSelector((state: RootReducer) => state.contacts)
+
   function renderMyContacts() {
-    if (!contactsData) {
+    if (!items) {
       return <p>Você não possui Contatos</p>
     }
 
-    return contactsData.map((item) => (
+    return items.map((item) => (
       <ContactBar
         name={item.name}
         phone={item.phone}
