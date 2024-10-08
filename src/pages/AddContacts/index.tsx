@@ -15,6 +15,19 @@ const AddContacts = () => {
   const [email, setEmail] = useState('')
   const [favorite, setFavorite] = useState(false)
 
+  const isValid = name !== '' && phone !== ''
+
+  function handleSubmit() {
+    const contact = {
+      name: name,
+      phone: phone,
+      email: email,
+      favorite: favorite
+    }
+
+    console.log('Salvar contato', contact)
+  }
+
   return (
     <S.ContainerAddContact>
       <Hero
@@ -24,6 +37,7 @@ const AddContacts = () => {
         titleIcon="Home"
         to="/"
       />
+
       <S.ContainerContacts>
         <InputText
           value={name}
@@ -46,8 +60,15 @@ const AddContacts = () => {
           />
         </S.ContainerPhoneAndEmail>
       </S.ContainerContacts>
+
       <S.ContainerButtons>
-        <Button title="Salvar" onPress={() => ({})} kind="primary" />
+        <Button
+          title="Salvar"
+          onPress={handleSubmit}
+          kind="primary"
+          disabled={!isValid}
+        />
+
         {favorite ? (
           <MdOutlineStar onClick={() => setFavorite(!favorite)} />
         ) : (
