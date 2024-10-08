@@ -17,16 +17,7 @@ const MyContacts = () => {
       return <p>Você não possui Contatos</p>
     }
 
-    return items.map((item) => (
-      <ContactBar
-        name={item.name}
-        phone={item.phone}
-        email={item.email}
-        image={item.image}
-        isFavorite={item.isFavorite}
-        key={item.id}
-      />
-    ))
+    return items.map((item) => <ContactBar key={item.id} data={item} />)
   }
 
   return (
