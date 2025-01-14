@@ -14,18 +14,19 @@ export const ContainerContacts = styled.div`
   display: flex;
   flex-direction: column;
   margin: 24px 0;
+  gap: 8px;
 `
 
 export const ContainerPhoneAndEmail = styled.div`
   display: flex;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 8px;
 `
 
 export const ContainerButtons = styled.div`
   display: flex;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: 16px;
 
   svg {
     font-size: 32px;
