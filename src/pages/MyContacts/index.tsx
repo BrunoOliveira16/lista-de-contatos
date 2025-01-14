@@ -13,8 +13,8 @@ const MyContacts = () => {
   const { items } = useSelector((state: RootReducer) => state.contacts)
 
   function renderMyContacts() {
-    if (!items) {
-      return <p>Você não possui Contatos</p>
+    if (items.length === 0) {
+      return <S.Title>Você não possui Contatos</S.Title>
     }
 
     return items.map((item) => <ContactBar key={item.id} data={item} />)

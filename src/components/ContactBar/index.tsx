@@ -1,21 +1,26 @@
+import { useDispatch } from 'react-redux'
 import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
+
+import { Contact } from '../../models/Contacts'
+import { remove } from '../../store/reducers/contacts'
 
 import Button from '../Button'
 
 import * as S from './styles'
-import { Contact } from '../../models/Contacts'
 
 interface ContactBarProps {
   data: Contact
 }
 
 const ContactBar = ({ data }: ContactBarProps) => {
+  const dispatch = useDispatch()
+
   function handleEdit(id: number) {
     console.log('Editar contato', id)
   }
 
   function handleRemove(id: number) {
-    console.log('Remover contato', id)
+    dispatch(remove(id))
   }
 
   function handleFavorite(id: number) {
