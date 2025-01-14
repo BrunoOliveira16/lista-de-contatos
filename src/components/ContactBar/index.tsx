@@ -44,14 +44,14 @@ const ContactBar = ({ data }: ContactBarProps) => {
           )}
         </S.ContainerTitle>
 
-        <div>
+        <S.ContainerPhoneAndEmail>
           <S.Text>
             Tel: <span>{data.phone}</span>
           </S.Text>
           <S.Text>
             E-mail: <span>{data.email}</span>
           </S.Text>
-        </div>
+        </S.ContainerPhoneAndEmail>
 
         <S.ContainerEdit>
           <Button

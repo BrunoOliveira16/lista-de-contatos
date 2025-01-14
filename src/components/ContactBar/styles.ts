@@ -52,6 +52,13 @@ export const ContainerEdit = styled.div`
   align-items: flex-end;
   gap: 12px;
 `
+
+export const ContainerPhoneAndEmail = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+`
+
 export const Text = styled.p`
   font-size: 20px;
   font-weight: 700;
