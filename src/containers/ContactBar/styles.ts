@@ -59,6 +59,13 @@ export const ContainerPhoneAndEmail = styled.div`
   gap: 6px;
 `
 
+export const ContainerContactEdit = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  gap: 8px;
+`
+
 export const Text = styled.p`
   font-size: 20px;
   font-weight: 700;

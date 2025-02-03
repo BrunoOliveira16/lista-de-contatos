@@ -5,7 +5,7 @@ import { IoHome } from 'react-icons/io5'
 import { RootReducer } from '../../store'
 
 import Hero from '../../components/Hero'
-import ContactBar from '../../components/ContactBar'
+import ContactBar from '../../containers/ContactBar'
 
 import * as S from './styles'
 

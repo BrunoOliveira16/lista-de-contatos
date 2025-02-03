@@ -34,10 +34,19 @@ const contactSlice = createSlice({
         }
         state.items.push(newContact)
       }
+    },
+    edit: (state, action: PayloadAction<Contact>) => {
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      )
+
+      if (index !== -1) {
+        state.items[index] = action.payload
+      }
     }
   }
 })
 
-export const { remove, register } = contactSlice.actions
+export const { remove, register, edit } = contactSlice.actions
 
 export default contactSlice.reducer
