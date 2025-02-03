@@ -10,6 +10,7 @@ import InputText from '../../components/Input'
 
 import * as S from './styles'
 import { useState } from 'react'
+import ContactInfo from '../../components/ContactInfo'
 
 interface ContactBarProps {
   data: Contact
@@ -85,9 +86,8 @@ const ContactBar = ({ data }: ContactBarProps) => {
         </S.ContainerImage>
         <S.ContainerInfo>
           <S.ContainerTitle>
-            <S.Text>
-              Nome: <span>{data.name}</span>
-            </S.Text>
+            <ContactInfo title="Nome" value={data.name} />
+
             {data.isFavorite ? (
               <MdOutlineStar onClick={handleFavorite} />
             ) : (
@@ -96,12 +96,8 @@ const ContactBar = ({ data }: ContactBarProps) => {
           </S.ContainerTitle>
 
           <S.ContainerPhoneAndEmail>
-            <S.Text>
-              Tel: <span>{data.phone}</span>
-            </S.Text>
-            <S.Text>
-              E-mail: <span>{data.email}</span>
-            </S.Text>
+            <ContactInfo title="Telefone" value={data.phone} />
+            <ContactInfo title="E-mail" value={data.email} />
           </S.ContainerPhoneAndEmail>
 
           <S.ContainerEdit>
