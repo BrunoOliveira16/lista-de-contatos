@@ -17,7 +17,7 @@ export const ContainerInput = styled.div`
 `
 
 export const Label = styled.label<labelProps>`
-  font-size: 22px;
+  font-size: 18px;
   color: ${(props) => (props.isError ? Colors.danger : Colors.blue100)};
 `
 

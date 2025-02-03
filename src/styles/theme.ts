@@ -5,7 +5,8 @@ export const Colors = {
   blue100: '#4169e1',
   blue150: '#4682b4',
   yellow: '#FFD700',
-  danger: '#c53a21'
+  danger: '#c53a21',
+  overlay: 'rgba(0, 0, 0, 0.5)'
 }
 
 export const Gradients = {
