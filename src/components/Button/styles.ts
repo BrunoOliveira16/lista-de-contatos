@@ -6,7 +6,7 @@ type ButtonProps = {
 }
 
 export const Button = styled.button<ButtonProps>`
-  display: inline-flex;
+  width: 100%;
   padding: 6px 10px;
   font-size: 14px;
   color: ${Colors.white};
