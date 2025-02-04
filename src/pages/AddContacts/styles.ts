@@ -25,8 +25,15 @@ export const ContainerPhoneAndEmail = styled.div`
 
 export const ContainerButtons = styled.div`
   display: flex;
+  width: 150px;
   gap: 16px;
-  margin-top: 16px;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+  }
 
   svg {
     font-size: 32px;

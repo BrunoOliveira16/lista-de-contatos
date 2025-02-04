@@ -139,15 +139,17 @@ const AddContacts = () => {
       <S.ContainerButtons>
         <Button title="Salvar" onPress={handleSubmit} kind="primary" />
 
-        {form.isFavorite ? (
-          <MdOutlineStar
-            onClick={() => handleChange('isFavorite', !form.isFavorite)}
-          />
-        ) : (
-          <MdStarBorder
-            onClick={() => handleChange('isFavorite', !form.isFavorite)}
-          />
-        )}
+        <span>
+          {form.isFavorite ? (
+            <MdOutlineStar
+              onClick={() => handleChange('isFavorite', !form.isFavorite)}
+            />
+          ) : (
+            <MdStarBorder
+              onClick={() => handleChange('isFavorite', !form.isFavorite)}
+            />
+          )}
+        </span>
       </S.ContainerButtons>
     </S.ContainerAddContact>
   )
