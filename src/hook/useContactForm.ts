@@ -1,17 +1,18 @@
+import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { RootReducer } from '../store'
+import { register } from '../store/reducers/contacts'
 import {
   updateForm,
   setError,
   resetForm
 } from '../store/reducers/contactFormSlice'
-import { register } from '../store/reducers/contacts'
-import { useNavigate } from 'react-router-dom'
 
 const DEFAULT_IMAGE_URL =
   'https://img.freepik.com/vetores-gratis/circulos-de-utilizadores-definidos_78370-4704.jpg?w=360'
 
-export function useContactForm() {
+const useContactForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { form, error } = useSelector((state: RootReducer) => state.contactForm)
@@ -71,3 +72,5 @@ export function useContactForm() {
     handlePhoneChange
   }
 }
+
+export default useContactForm

@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
+
 import { Contact } from '../models/Contacts'
 import { remove, edit } from '../store/reducers/contacts'
 
-export default function useEditContact(initialContact: Contact) {
+const useEditContact = (initialContact: Contact) => {
   const dispatch = useDispatch()
 
   const [contact, setContact] = useState<Contact>(initialContact)
@@ -71,3 +72,5 @@ export default function useEditContact(initialContact: Contact) {
     handleCancel
   }
 }
+
+export default useEditContact
