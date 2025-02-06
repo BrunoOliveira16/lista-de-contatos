@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 import { Colors } from '../../styles/theme'
 
-type labelProps = {
-  isError?: boolean
+type LabelProps = {
+  $hasError?: boolean
 }
 
-type inputProps = {
-  isError?: boolean
+type InputProps = {
+  $error?: boolean
 }
 
 export const ContainerInput = styled.div`
@@ -16,16 +16,16 @@ export const ContainerInput = styled.div`
   gap: 6px;
 `
 
-export const Label = styled.label<labelProps>`
+export const Label = styled.label<LabelProps>`
   font-size: 18px;
-  color: ${(props) => (props.isError ? Colors.danger : Colors.blue100)};
+  color: ${({ $hasError }) => ($hasError ? Colors.danger : Colors.blue100)};
 `
 
-export const Input = styled.input<inputProps>`
+export const Input = styled.input<InputProps>`
   padding: 8px;
   font-size: 16px;
   border: 2px solid;
-  border-color: ${(props) => (props.isError ? Colors.danger : Colors.blue100)};
+  border-color: ${({ $error }) => ($error ? Colors.danger : Colors.blue100)};
   border-radius: 4px;
 
   &:focus {

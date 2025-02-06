@@ -4,7 +4,7 @@ type InputTextProps = {
   label?: string
   placeholder?: string
   value?: string
-  isError?: boolean
+  hasError?: boolean
   onChangeText: (args: string) => void
   onBlur?: () => void
 }
@@ -13,20 +13,20 @@ const InputText = ({
   label,
   placeholder,
   value = '',
-  isError,
+  hasError,
   onChangeText,
   onBlur
 }: InputTextProps) => {
   return (
     <S.ContainerInput>
-      <S.Label isError={isError}>{label}</S.Label>
+      <S.Label $hasError={hasError || undefined}>{label}</S.Label>
       <S.Input
         type="text"
         placeholder={placeholder}
         value={value}
         onChange={(e) => onChangeText(e.target.value)}
         onBlur={onBlur}
-        isError={isError}
+        $error={hasError || undefined}
       />
     </S.ContainerInput>
   )
