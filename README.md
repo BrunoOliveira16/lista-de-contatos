@@ -2,7 +2,7 @@
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/BrunoOliveira16/lista-de-contatos?style=for-the-badge)
 ![Languages](https://img.shields.io/github/languages/count/BrunoOliveira16/lista-de-contatos?style=for-the-badge)
-![Status projeto](https://img.shields.io/badge/STATUS-EM%20DESENVOLVIMENTO-blue?style=for-the-badge)
+![Status projeto](https://img.shields.io/badge/STATUS-CONCLUIDO-GREEN?style=for-the-badge)
 
 ## ✔️ Tecnologias Utilizadas
 
@@ -13,6 +13,12 @@
 
 <br>
 
+<img src="./public/assets/bg-example.png" alt="screenshot do projeto" />
+
+<br>
+
+<br>
+
 ## 📎 Sumario
 
 - 📌 Resumo do Projeto
@@ -20,12 +26,13 @@
 - ⭐ Desafio do Projeto
 - 📂 Temas abordados
 - 🙋🏻‍♂️ Autor
+- 💻 Licença
 
 <br>
 
 ## 📌 Resumo do Projeto
 
-em construção...
+Este projeto é uma aplicação de lista de contatos desenvolvida com React, TypeScript, Redux e Styled-Components. Ele permite adicionar, editar, remover e favoritar contatos, com gerenciamento de estado eficiente via Redux. A interface é estilizada com Styled-Components, garantindo uma experiência visual moderna e responsiva.
 
 <br>
 
@@ -75,3 +82,10 @@ Para executar este projeto localmente em sua máquina, siga estas etapas:
 
 | [<img src="https://avatars.githubusercontent.com/u/103857382?v=4" width=115><br><sub>Bruno Oliveira</sub>](https://github.com/BrunoOliveira16) |
 | :--------------------------------------------------------------------------------------------------------------------------------------------: |
+
+<br>
+
+## 💻 Licença
+Este projeto está licenciado sob a licença MIT. Isso significa que você pode usar, copiar, modificar e distribuir o código-fonte deste projeto para qualquer finalidade, desde que inclua uma cópia da licença em todas as cópias ou partes substanciais do software.
+
+Para obter mais informações sobre a licença MIT, consulte o <a href="https://opensource.org/license/mit/">texto completo da licença.</a>
