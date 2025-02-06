@@ -17,6 +17,10 @@
 
 <br>
 
+<div align="center">
+    <a href="https://lista-de-contatos-beige.vercel.app" target="_blank">Visualize o projeto aqui</a>
+</div>
+
 <br>
 
 ## 📎 Sumario
