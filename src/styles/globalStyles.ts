@@ -14,7 +14,7 @@ export const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('/assets/background-image.jpg');
+    background-image: url('https://raw.githubusercontent.com/BrunoOliveira16/Curso-Engenheiro-Front-End-EBAC/main/Modulo-32/ImagesListaDeContatos/background-image.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

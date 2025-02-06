@@ -13,7 +13,7 @@
 
 <br>
 
-<img src="./public/assets/bg-example.png" alt="screenshot do projeto" />
+<img src="https://raw.githubusercontent.com/BrunoOliveira16/Curso-Engenheiro-Front-End-EBAC/main/Modulo-32/ImagesListaDeContatos/bg-example.png" alt="screenshot do projeto" />
 
 <br>
 
