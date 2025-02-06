@@ -11,7 +11,9 @@ function App() {
     <Provider store={store}>
       <BrowserRouter>
         <GlobalStyle />
-        <Router />
+        <main>
+          <Router />
+        </main>
       </BrowserRouter>
     </Provider>
   )

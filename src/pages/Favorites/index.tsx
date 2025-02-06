@@ -16,7 +16,7 @@ const Favorites = () => {
 
   function renderFavorites() {
     if (favoritesData.length === 0) {
-      return <p>Você não possui favoritos</p>
+      return <S.Title>Você não possui favoritos</S.Title>
     }
 
     return favoritesData.map((item) => <ContactBar key={item.id} data={item} />)

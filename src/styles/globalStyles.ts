@@ -9,6 +9,18 @@ export const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
+  main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('/assets/background-image.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
   a {
     text-decoration: none;
   }
