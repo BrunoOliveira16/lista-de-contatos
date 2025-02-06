@@ -75,3 +75,8 @@ export const Text = styled.p`
     font-weight: 300;
   }
 `
+
+export const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: ${Colors.danger};
+`

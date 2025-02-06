@@ -1,75 +1,62 @@
-import { useDispatch } from 'react-redux'
 import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
-
-import { Contact } from '../../models/Contacts'
-import { remove, edit } from '../../store/reducers/contacts'
 
 import Button from '../../components/Button'
 import Modal from '../../components/Modal'
 import InputText from '../../components/Input'
+import ContactInfo from '../../components/ContactInfo'
+
+import { Contact } from '../../models/Contacts'
+import useEditContact from '../../hook/useEditContact'
 
 import * as S from './styles'
-import { useState } from 'react'
-import ContactInfo from '../../components/ContactInfo'
 
 interface ContactBarProps {
   data: Contact
 }
 
 const ContactBar = ({ data }: ContactBarProps) => {
-  const dispatch = useDispatch()
-
-  const [showEditModal, setShowEditModal] = useState(false)
-  const [editedContact, setEditedContact] = useState<Contact>(data)
-
-  function handleEdit() {
-    dispatch(edit(editedContact))
-    setShowEditModal(false)
-  }
-
-  function handleRemove(id: number) {
-    dispatch(remove(id))
-  }
-
-  function handleFavorite() {
-    const updatedContact = { ...data, isFavorite: !data.isFavorite }
-    dispatch(edit(updatedContact))
-    setEditedContact(updatedContact)
-  }
-
-  function handleChange(field: keyof Contact, value: string) {
-    setEditedContact((prev) => ({
-      ...prev,
-      [field]: value
-    }))
-  }
+  const {
+    contact,
+    showEditModal,
+    errors,
+    setShowEditModal,
+    handleEdit,
+    handleRemove,
+    handleFavorite,
+    handleChange,
+    handleCancel
+  } = useEditContact(data)
 
   function renderContactEdit() {
     return (
       <S.ContainerContactEdit>
         <InputText
-          value={editedContact.name}
+          value={contact.name}
           placeholder="nome"
           label="Nome"
           onChangeText={(value) => handleChange('name', value)}
+          isError={!!errors.name}
         />
+        {errors.name && <S.ErrorMessage>{errors.name}</S.ErrorMessage>}
 
         <InputText
-          value={editedContact.image}
+          value={contact.image}
           placeholder="URL imagem"
           label="Imagem"
           onChangeText={(value) => handleChange('image', value)}
         />
 
         <InputText
-          value={editedContact.phone}
+          value={contact.phone}
           placeholder="(XX) XXXXX-XXXX"
           label="Telefone"
           onChangeText={(value) => handleChange('phone', value)}
+          isError={!!errors.phone}
         />
+        {errors.phone && <S.ErrorMessage>{errors.phone}</S.ErrorMessage>}
 
         <InputText
-          value={editedContact.email}
+          value={contact.email}
           placeholder="E-mail"
           label="E-mail"
           onChangeText={(value) => handleChange('email', value)}
@@ -119,10 +106,7 @@ const ContactBar = ({ data }: ContactBarProps) => {
         <Modal
           title="Editar Contato"
           handleSubmit={handleEdit}
-          handleCancel={() => {
-            setShowEditModal(false)
-            setEditedContact(data)
-          }}
+          handleCancel={() => handleCancel(data)}
         >
           {renderContactEdit()}
         </Modal>
