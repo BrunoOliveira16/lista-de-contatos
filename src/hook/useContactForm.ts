@@ -5,36 +5,29 @@ import { RootReducer } from '../store'
 import { register } from '../store/reducers/contacts'
 import {
   updateForm,
-  setError,
+  setFormError,
   resetForm
 } from '../store/reducers/contactFormSlice'
-
-const DEFAULT_IMAGE_URL =
-  'https://img.freepik.com/vetores-gratis/circulos-de-utilizadores-definidos_78370-4704.jpg?w=360'
+import {
+  validateFormField,
+  validateForm,
+  isValidUrl,
+  formatPhoneNumber,
+  DEFAULT_IMAGE_URL
+} from '../utils/formValidation'
 
 const useContactForm = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { form, error } = useSelector((state: RootReducer) => state.contactForm)
-
-  function isValidUrl(url: string) {
-    try {
-      new URL(url)
-      return true
-    } catch {
-      return false
-    }
-  }
+  const { form, formError } = useSelector(
+    (state: RootReducer) => state.contactForm
+  )
 
   function handleSubmit() {
-    const hasErrors = {
-      name: form.name === '',
-      phone: form.phone === ''
-    }
+    const hasErrors = validateForm(form)
+    dispatch(setFormError(hasErrors))
 
-    dispatch(setError(hasErrors))
-
-    if (!hasErrors.name && !hasErrors.phone) {
+    if (Object.keys(hasErrors).length === 0) {
       const contactImage = isValidUrl(form.image)
         ? form.image
         : DEFAULT_IMAGE_URL
@@ -47,29 +40,22 @@ const useContactForm = () => {
   }
 
   function handleBlur(field: 'name' | 'phone') {
-    dispatch(setError({ ...error, [field]: form[field].trim() === '' }))
+    const error = validateFormField(field, form[field])
+    dispatch(setFormError({ ...formError, [field]: error }))
   }
 
   function handleChange(field: keyof typeof form, value: string | boolean) {
-    dispatch(updateForm({ [field]: value }))
-  }
-
-  function handlePhoneChange(value: string) {
-    const formattedValue = value
-      .replace(/\D/g, '')
-      .slice(0, 11)
-      .replace(/^(\d{2})(\d{5})(\d{4})?/, '($1) $2-$3')
-
-    dispatch(updateForm({ phone: formattedValue.trim() }))
+    const formattedValue =
+      field === 'phone' ? formatPhoneNumber(value as string) : value
+    dispatch(updateForm({ [field]: formattedValue }))
   }
 
   return {
     form,
-    error,
+    formError,
     handleSubmit,
     handleBlur,
-    handleChange,
-    handlePhoneChange
+    handleChange
   }
 }
 

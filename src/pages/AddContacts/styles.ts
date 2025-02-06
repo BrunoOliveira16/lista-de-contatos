@@ -41,3 +41,8 @@ export const ContainerButtons = styled.div`
     cursor: pointer;
   }
 `
+
+export const ErrorMessage = styled.p`
+  font-size: 12px;
+  color: ${Colors.danger};
+`

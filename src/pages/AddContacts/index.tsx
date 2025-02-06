@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux'
 import { RiAddLine } from 'react-icons/ri'
 import { IoHome } from 'react-icons/io5'
 import { MdOutlineStar, MdStarBorder } from 'react-icons/md'
@@ -7,18 +8,15 @@ import InputText from '../../components/Input'
 import Button from '../../components/Button'
 
 import useContactForm from '../../hook/useContactForm'
+import { resetForm } from '../../store/reducers/contactFormSlice'
 
 import * as S from './styles'
 
 const AddContacts = () => {
-  const {
-    form,
-    error,
-    handleSubmit,
-    handleBlur,
-    handleChange,
-    handlePhoneChange
-  } = useContactForm()
+  const dispatch = useDispatch()
+
+  const { form, formError, handleSubmit, handleBlur, handleChange } =
+    useContactForm()
 
   return (
     <S.ContainerAddContact>
@@ -28,17 +26,22 @@ const AddContacts = () => {
         IconLink={IoHome}
         titleIcon="Home"
         to="/"
+        onPress={() => dispatch(resetForm())}
       />
 
       <S.ContainerContacts>
-        <InputText
-          value={form.name.toString()}
-          placeholder="nome"
-          label="Nome"
-          onChangeText={(value) => handleChange('name', value)}
-          onBlur={() => handleBlur('name')}
-          isError={error.name}
-        />
+        <div>
+          <InputText
+            value={form.name.toString()}
+            placeholder="nome"
+            label="Nome"
+            onChangeText={(value) => handleChange('name', value)}
+            onBlur={() => handleBlur('name')}
+            hasError={!!formError.name}
+          />
+          {formError.name && <S.ErrorMessage>{formError.name}</S.ErrorMessage>}
+        </div>
+
         <InputText
           value={form.image.toString()}
           placeholder="URL Imagem"
@@ -47,14 +50,20 @@ const AddContacts = () => {
         />
 
         <S.ContainerPhoneAndEmail>
-          <InputText
-            value={form.phone.toString()}
-            placeholder="(xx) xxxxx-xxxx"
-            label="Telefone"
-            onChangeText={handlePhoneChange}
-            onBlur={() => handleBlur('phone')}
-            isError={error.phone}
-          />
+          <div>
+            <InputText
+              value={form.phone.toString()}
+              placeholder="(xx) xxxxx-xxxx"
+              label="Telefone"
+              onChangeText={(value) => handleChange('phone', value)}
+              onBlur={() => handleBlur('phone')}
+              hasError={!!formError.phone}
+            />
+            {formError.phone && (
+              <S.ErrorMessage>{formError.phone}</S.ErrorMessage>
+            )}
+          </div>
+
           <InputText
             value={form.email.toString()}
             placeholder="e-mail"

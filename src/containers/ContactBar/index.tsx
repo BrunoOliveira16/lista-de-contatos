@@ -18,26 +18,30 @@ const ContactBar = ({ data }: ContactBarProps) => {
   const {
     contact,
     showEditModal,
-    errors,
+    editError,
     setShowEditModal,
     handleEdit,
     handleRemove,
     handleFavorite,
     handleChange,
-    handleCancel
+    handleCancel,
+    handleBlur
   } = useEditContact(data)
 
   function renderContactEdit() {
     return (
       <S.ContainerContactEdit>
-        <InputText
-          value={contact.name}
-          placeholder="nome"
-          label="Nome"
-          onChangeText={(value) => handleChange('name', value)}
-          isError={!!errors.name}
-        />
-        {errors.name && <S.ErrorMessage>{errors.name}</S.ErrorMessage>}
+        <div>
+          <InputText
+            value={contact.name}
+            placeholder="nome"
+            label="Nome"
+            onChangeText={(value) => handleChange('name', value)}
+            onBlur={() => handleBlur('name')}
+            hasError={!!editError.name}
+          />
+          {editError.name && <S.ErrorMessage>{editError.name}</S.ErrorMessage>}
+        </div>
 
         <InputText
           value={contact.image}
@@ -46,14 +50,19 @@ const ContactBar = ({ data }: ContactBarProps) => {
           onChangeText={(value) => handleChange('image', value)}
         />
 
-        <InputText
-          value={contact.phone}
-          placeholder="(XX) XXXXX-XXXX"
-          label="Telefone"
-          onChangeText={(value) => handleChange('phone', value)}
-          isError={!!errors.phone}
-        />
-        {errors.phone && <S.ErrorMessage>{errors.phone}</S.ErrorMessage>}
+        <div>
+          <InputText
+            value={contact.phone}
+            placeholder="(XX) XXXXX-XXXX"
+            label="Telefone"
+            onChangeText={(value) => handleChange('phone', value)}
+            onBlur={() => handleBlur('phone')}
+            hasError={!!editError.phone}
+          />
+          {editError.phone && (
+            <S.ErrorMessage>{editError.phone}</S.ErrorMessage>
+          )}
+        </div>
 
         <InputText
           value={contact.email}

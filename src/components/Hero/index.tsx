@@ -9,6 +9,7 @@ type HeroProps = {
   titleIcon?: string
   Icon: IconType
   IconLink?: IconType
+  onPress?: () => void
 }
 
 const Hero = ({
@@ -17,14 +18,15 @@ const Hero = ({
   to,
   titleIcon,
   Icon,
-  IconLink
+  IconLink,
+  onPress
 }: HeroProps) => (
   <S.ContainerHero>
     <S.ContainerTitle>
       <Icon />
       <S.Title>{title}</S.Title>
     </S.ContainerTitle>
-    <S.TextLink to={to as string}>
+    <S.TextLink to={to as string} onClick={onPress}>
       {IconLink && <IconLink title={titleIcon} />}
       {returnLink}
     </S.TextLink>

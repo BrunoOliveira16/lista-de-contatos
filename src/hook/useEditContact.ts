@@ -1,39 +1,40 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Contact } from '../models/Contacts'
+import { RootReducer } from '../store'
 import { remove, edit } from '../store/reducers/contacts'
+import { setEditError, resetForm } from '../store/reducers/contactFormSlice'
+import {
+  validateFormField,
+  validateForm,
+  formatPhoneNumber,
+  isValidUrl,
+  DEFAULT_IMAGE_URL
+} from '../utils/formValidation'
 
 const useEditContact = (initialContact: Contact) => {
   const dispatch = useDispatch()
+  const { editError } = useSelector((state: RootReducer) => state.contactForm)
 
   const [contact, setContact] = useState<Contact>(initialContact)
   const [showEditModal, setShowEditModal] = useState(false)
-  const [errors, setErrors] = useState<{ name?: string; phone?: string }>({})
-
-  function validateFields() {
-    let isValid = true
-    const newErrors: { name?: string; phone?: string } = {}
-
-    if (!contact.name.trim()) {
-      newErrors.name = 'Nome é obrigatório'
-      isValid = false
-    }
-
-    const phoneRegex = /^\(\d{2}\) \d{5}-\d{4}$/
-    if (!phoneRegex.test(contact.phone)) {
-      newErrors.phone = 'Formato inválido. Ex: (XX) XXXXX-XXXX'
-      isValid = false
-    }
-
-    setErrors(newErrors)
-    return isValid
-  }
 
   function handleEdit() {
-    if (!validateFields()) return
-    dispatch(edit(contact))
-    setShowEditModal(false)
+    const hasErrors = validateForm(contact)
+    dispatch(setEditError(hasErrors))
+
+    if (Object.keys(hasErrors).length === 0) {
+      console.log('URL', isValidUrl(contact.image))
+
+      const updatedContact = {
+        ...contact,
+        image: isValidUrl(contact.image) ? contact.image : DEFAULT_IMAGE_URL
+      }
+
+      dispatch(edit(updatedContact))
+      setShowEditModal(false)
+    }
   }
 
   function handleRemove(id: number) {
@@ -47,16 +48,24 @@ const useEditContact = (initialContact: Contact) => {
   }
 
   function handleChange(field: keyof Contact, value: string) {
+    const formattedValue =
+      field === 'phone' ? formatPhoneNumber(value as string) : value
+
     setContact((prev) => ({
       ...prev,
-      [field]: value
+      [field]: formattedValue
     }))
   }
 
   function handleCancel(data: Contact) {
     setContact(data)
-    setErrors({})
+    dispatch(resetForm())
     setShowEditModal(false)
+  }
+
+  function handleBlur(field: 'name' | 'phone') {
+    const error = validateFormField(field, contact[field])
+    dispatch(setEditError({ ...editError, [field]: error }))
   }
 
   return {
@@ -64,12 +73,13 @@ const useEditContact = (initialContact: Contact) => {
     setContact,
     showEditModal,
     setShowEditModal,
-    errors,
+    editError,
     handleEdit,
     handleRemove,
     handleFavorite,
     handleChange,
-    handleCancel
+    handleCancel,
+    handleBlur
   }
 }
 

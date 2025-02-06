@@ -10,8 +10,8 @@ declare type ContactDataProps = {
 declare type FormFields = 'name' | 'phone' | 'image' | 'email' | 'isFavorite'
 
 declare type FormErrors = {
-  name: boolean
-  phone: boolean
+  name?: string
+  phone?: string
 }
 
 declare type FormState = {
