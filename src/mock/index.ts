@@ -25,7 +25,7 @@ export const contacts: Contact[] = [
     phone: '(21) 98889-9999',
     email: 'clark@email.com',
     image:
-      'https://rollingstone.uol.com.br/media/_versions/2024/03/james-gunn-revela-primeira-imagem-e-anuncia-novo-titulo-de-superman-legacy-foto-reproducaodc-comics_widelg.jpg',
+      'https://assets.mycast.io/characters/superman-10260500-normal.jpg?1678802992',
     isFavorite: true
   }
 ]
